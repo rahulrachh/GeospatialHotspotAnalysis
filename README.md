@@ -1,2 +1,1 @@
-# My New Repo
-Setting up github repo by ssh key from my work pc
+This project will pursue in the domain of restaurant in the city of Toronto, Canada. We will extract the location from foursquare API and  locate the places that have the restaurants nearby which would be of more certainty to be helpful for new restaurant owners to be more profitable. My main goal is to use data segmentation technique and machine learning algorithms to predict the location that will have higher success for a restaurant to flourish. The business problem that I want to tackle is to find locations that are suitable for the owners of restaurants or franchise so such that there are many restaurants in close proximity enough to get their attention at the opening of new restaurant.
