@@ -1,4 +1,4 @@
-# Hotspot Analysis on Apache Sedona Template Project
+# Hotspot Analysis on Apache Template Project
 
 
 ## Requirement
@@ -19,11 +19,11 @@ The Problem Definition page is here: [http://sigspatial2016.sigspatial.org/giscu
 The Submit Format page is here: [http://sigspatial2016.sigspatial.org/giscup2016/submit](http://sigspatial2016.sigspatial.org/giscup2016/submit)
 
 #### Special requirement (different from GIS CUP)
-As stated in the Problem Definition page, in this task, you are asked to implement a Spark program to calculate the Getis-Ord statistic of NYC Taxi Trip datasets. We call it "**Hot cell analysis**"
+As stated in the Problem Definition page, in this task, you are asked to implement a Spark program to calculate the Getis-Ord statistic of Toronto, Canada restaurant  datasets. We call it "**Hot cell analysis**"
 
 To reduce the computation power need，we made the following changes:
 
-1. The input will be a monthly taxi trip dataset from 2009 - 2012. For example, "yellow\_tripdata\_2009-01\_point.csv", "yellow\_tripdata\_2010-02\_point.csv".
+1. The input will be a monthly restaurant  dataset from 2009 - 2012. For example, "foursquare\_data\_2009-01\_point.csv", "foursquare\_data\_2010-02\_point.csv".
 2. Each cell unit size is 0.01 * 0.01 in terms of latitude and longitude degrees.
 3. You should use 1 day as the Time Step size. The first day of a month is step 1. Every month has 31 days.
 4. You only need to consider Pick-up Location.
@@ -46,11 +46,11 @@ Definition: You first need to parse the queryRectangle (e.g., "-155.940114,19.08
 
 1. Output path (Mandatory)
 2. Task name: "hotzoneanalysis" or "hotcellanalysis"
-3. Task parameters: (1) Hot zone (2 parameters): nyc taxi data path, zone path(2) Hot cell (1 parameter): nyc taxi data path
+3. Task parameters: (1) Hot zone (2 parameters): Toronto, Canada restaurant data path, zone path(2) Hot cell (1 parameter): Toronto, Canada restaurant data path
 
 Example
 ```
-test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/yellow_trip_sample_100000.csv
+test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/foursquare__sample_100000.csv
 ```
 
 Note: 
@@ -62,17 +62,17 @@ Note:
 
 
 ### Input data format
-The main function/entrace is "cse512.Entrance" scala file.
+The main function/entrace is "Entrance.scala" scala file.
 
-1. Point data: the input point dataset is the pickup point of New York Taxi trip datasets. The data format of this phase is the original format of NYC taxi trip which is different from the previous phase. But the coding template already parsed it for you. Find the data from our asu google drive shared folder: [https://drive.google.com/drive/folders/1W4GLKNsGlgXp7fHtDlhHEBdLVw_IuAXh?usp=sharing](https://drive.google.com/drive/folders/1W4GLKNsGlgXp7fHtDlhHEBdLVw_IuAXh?usp=sharing). To get the permission to download the data, you have to use your asu gmail account.
+1. Point data: the input point dataset is the pickup point of New York restaurant  datasets. The data format of this phase is the original format of Toronto, Canada restaurant  which is different from the previous phase. But the coding template already parsed it for you. Find the data from our asu google drive shared folder: [https://drive.google.com/drive/folders/1W4GLKNsGlgXp7fHtDlhHEBdLVw_IuAXh?usp=sharing](https://drive.google.com/drive/folders/1W4GLKNsGlgXp7fHtDlhHEBdLVw_IuAXh?usp=sharing). To get the permission to download the data, you have to use your asu gmail account.
 
 2. Zone data (only for hot zone analysis): at "src/resources/zone-hotzone" of the template
 
 #### Hot zone analysis
-The input point data can be any small subset of NYC taxi dataset.
+The input point data can be any small subset of Toronto, Canada restaurant dataset.
 
 #### Hot cell analysis
-The input point data is a monthly NYC taxi trip dataset (2009-2012) like "yellow\_tripdata\_2009-01\_point.csv"
+The input point data is a monthly Toronto, Canada restaurant  dataset (2009-2012) like "foursquare\_data\_2009-01\_point.csv"
 
 ### Output data format
 
@@ -99,7 +99,7 @@ An example input and answer are put in "testcase" folder of the coding template.
 
 1. hotcell-example-answer-withZscore-sample.csv -- answer of the sampled input data with score.
 2. hotcell-example-answer-withZscore.csv -- answer with score of the full input data from Google Drive shared folder.
-3. hotcell-example-answer.csv -- the expected output result of using the yellow_tripdata_2009-01_point.csv as the input.
+3. hotcell-example-answer.csv -- the expected output result of using the foursquare_data_2009-01_point.csv as the input.
 4. hotcell-example-input.txt -- the input for running the jar file.
 
 ## Where you need to change
@@ -139,5 +139,5 @@ If you are using the Scala template
 
 1. Go to project root folder
 2. Run ```sbt clean assembly```. You may need to install sbt in order to run this command.
-3. Find the packaged jar in "./target/scala-2.11/Apache-Sedona-Hotspot-Analysis-assembly-0.1.0.jar"
-4. Now, you can run the jar on Spark with spark-submit command. If you already have set up the Hadoop and Spark test environment, you should be able to run the spark-submit command from your command line. Submit the jar to Spark using Spark command "./bin/spark-submit". A pseudo code example: ```./bin/spark-submit ~/GitHub/Hotspot-Analysis-Apache-Sedona-Template/target/scala-2.11/Apache-Sedona-Hotspot-Analysis-assembly-0.1.0.jar test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/yellow_tripdata_2009-01_point.csv```
+3. Find the packaged jar in "./target/scala-2.11/Apache--Hotspot-Analysis-assembly-0.1.0.jar"
+4. Now, you can run the jar on Spark with spark-submit command. If you already have set up the Hadoop and Spark test environment, you should be able to run the spark-submit command from your command line. Submit the jar to Spark using Spark command "./bin/spark-submit". A pseudo code example: ```./bin/spark-submit ~/GitHub/Hotspot-Analysis-Apache--Template/target/scala-2.11/Apache--Hotspot-Analysis-assembly-0.1.0.jar test/output hotzoneanalysis src/resources/point-hotzone.csv src/resources/zone-hotzone.csv hotcellanalysis src/resources/foursquare_data_2009-01_point.csv```
